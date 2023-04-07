@@ -13,6 +13,11 @@ $(document).keypress(function () {
 
 // user click
 $(".btn").on("click",function(event){
+    if (!hasStarted) {
+        hasStarted = true;
+        nextSequence();
+        return;
+    }
     var userChosenColour = event.target.id;
     userClickedPattern.push(userChosenColour);
     playSound(userChosenColour);
@@ -77,40 +82,6 @@ function animatePress(currentColour) {
         element.removeClass("pressed");
     },100);
 }
-
-
-
-
-// alert("hi");
-// var hasStarted = false;
-// $(document).keypress(function () {
-//     if(!hasStarted) {
-//         gamePattern = [];
-//         nextSequence();
-//         hasStarted = true;
-//         console.log(hasStarted);
-//         startGame();
-//         hasStarted = false;
-//         console.log(hasStarted);
-//     }
-// });
-// // game
-// function startGame(){
-//     var level = 1;
-//     console.log(hasStarted);
-//     alert(hasStarted);
-//     while(hasStarted) {
-//         alert(level);
-//         var tmp = "Level "+level;
-//         $("h1").text(tmp);
-//         hasStarted = checkAnswer();
-//         nextSequence();
-//         userClickedPattern = [];
-//         level++;
-//     }
-//     $("h1").text("Game Over, Press Any Key to Restart");
-// }
-
 
 
 
